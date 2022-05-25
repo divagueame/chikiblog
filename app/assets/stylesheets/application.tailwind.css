@@ -17,6 +17,14 @@
   a {
     @apply text-blue-600 underline;
   }
+  input,
+  textarea {
+    @apply bg-blue-400 p-2
+  }
+  [type=submit] {
+    @apply bg-blue-900 p-4 rounded-xl
+    
+  }
 }
 
 
