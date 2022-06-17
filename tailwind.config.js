@@ -3,6 +3,7 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
+    './app/assets/stylesheets/fonts/*.*',
     './app/javascript/**/*.js',
     './src/**/*.{html,js}',
     './node_modules/tw-elements/dist/js/**/*.js'

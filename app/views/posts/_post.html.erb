@@ -1,9 +1,8 @@
-
-<div id="<%= dom_id post %>" class="rounded-xl border-2 border-slate-700 p-1 mb-3">
+<div id="<%= dom_id post %>" class="rounded p-1 mb-10">
   <h1> 
     <%= post.title %>
   </h1>
-  <h5><%= pluralize(posts.views, "View") %></h5>
+  <h5><%= pluralize(post.views, "View") %></h5>
   <p>
     <%= post.body %>
   </p>
