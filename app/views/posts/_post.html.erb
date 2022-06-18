@@ -2,7 +2,10 @@
   <h1> 
     <%= post.title %>
   </h1>
-  <h5><%= pluralize(post.views, "View") %></h5>
+  <% if is_admin? %>
+    <h5><%= pluralize(post.views, "View") %></h5>
+  <% end %>
+  
   <p>
     <%= post.body %>
   </p>
