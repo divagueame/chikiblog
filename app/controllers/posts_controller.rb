@@ -2,26 +2,28 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new edit create update destroy ]
 
-  # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @pagy, @posts = pagy_countless(Post.order(created_at: :desc), items: 6)
+    render "scrollable_list" if params[:page]
+    # respond_to do |format|
+    #   format.html # GET
+    #   format.turbo_stream # POST
+    # end
   end
 
-  # GET /posts/1 or /posts/1.json
   def show
     @post.update(views: @posts.views + 1 )
   end
 
-  # GET /posts/new
+
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
+
   def edit
   end
 
-  # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
 
@@ -36,7 +38,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -60,12 +61,10 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body)
     end
